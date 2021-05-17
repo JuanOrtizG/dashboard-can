@@ -22,25 +22,33 @@ body{
     
 }
 
-.card-body{
+.caratula{
     display: inline;
     justify-content: center;
     text-align: center;
-    padding: 10%;
+    padding: 100px;
+
 }
 
-.monitor {
-    padding: 8px;
+.body-burbuja{
+    display: inline;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
 }
-
+.body-time {
+    display: inline;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+}
 h1{
     color: rgb(42, 136, 165);
 }
 
-
 img {
     height: 40px;
-    height: 10x;
+    height: 40px;
 }
 
 .burbuja {
