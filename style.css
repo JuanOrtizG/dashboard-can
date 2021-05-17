@@ -29,6 +29,10 @@ body{
     padding: 10%;
 }
 
+.monitor {
+    padding: 8px;
+}
+
 h1{
     color: rgb(42, 136, 165);
 }
