@@ -5,13 +5,14 @@ google.charts.load('current', {'packages':['gauge']});
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Memory', 80],
-          ['CPU', 55],
-          ['Network', 68]
+          ['RPM', 80],
+          ['Vel', 55],
+          ['Acelerador', 68],
+          ['Acelerador', 68]
         ]);
 
         var options = {
-          width: 500, height: 500,
+          width: 400, height: 300,
           redFrom: 90, redTo: 100,
           yellowFrom:75, yellowTo: 90,
           minorTicks: 5

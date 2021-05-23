@@ -17,6 +17,10 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  <!-- FLOT -->
+  <link href="flot/examples/examples.css" rel="stylesheet" type="text/css">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -167,7 +171,19 @@
           <div id="chart_div"></div>
 
         </div>
-        <!-- /.card-body -->        
+        <!-- /.card-body -->    
+        
+        <div class="demo-container ">
+          <div id="placeholder" class="demo-placeholder" style="width: 600px; height:100px;"></div>
+        </div>
+    
+        <p>You can update a chart periodically to get a real-time effect by using a timer to insert the new data in the plot and redraw it.</p>
+    
+        <p>Time between updates: <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds</p>
+
+
+
+
         <div class="card-footer">
           Footer
         </div>
@@ -208,5 +224,10 @@
 <!--TIEMPO REAL-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="script/google-chart.js"> </script>
+
+<!-- FLOT JS-->
+<script language="javascript" type="text/javascript" src="flot/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
+	<script type="text/javascript" src="script/realtime.js"></script>
 </body>
 </html>

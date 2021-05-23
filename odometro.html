@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/odometer-theme-car.css">
+    <link rel="stylesheet" href="css/odometro.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row-odometer">
+        <div id="odometer" class="some-element"></div>
+      </div>
+
+      <script src="script/odometer.js"></script>
+  <script>
+var requestsInterval = 5 * 1000; //5 seconds
+var current = 750.12;
+var increment = 1925.27;
+var el = document.querySelector('.some-element');
+od = new Odometer({el: el, value: current, format: '(,ddd).dd'});
+
+var interval=setInterval(function(){
+  current += increment;
+  od.update(current);
+}, requestsInterval);
+  </script>
+</body>
+
+
+
+
+
+
+  

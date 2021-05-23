@@ -1,0 +1,58 @@
+@import url("//fonts.googleapis.com/css?family=Arimo");
+
+body {
+	background-color: #fff;
+}
+
+.row-odometer {
+	display: flex;
+	justify-content: center;
+	padding: 2em 0;
+}
+
+.odometer {
+	font-size: 100px;
+	border: 0;
+	border-radius: 0.25em;
+	padding: 25px;
+}
+
+.odometer .odometer-value {
+	background: linear-gradient(to bottom, #c0463a 0%, #f0a653 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.odometer .odometer-inside:after {
+	content: ' ';
+	position: absolute;
+	top: 120px;
+	left: 0;
+	height: 2px;
+	background-color: #c0463a;
+	width: 100%;
+	margin: 0 auto;
+	background-image: -webkit-gradient(linear, left bottom, right bottom, color-stop(0.02, black), color-stop(0.5, #c0463a), color-stop(0.98, black));
+}
+
+.odometer.odometer-auto-theme .odometer-digit {
+	border-radius: 0;
+	box-shadow: none;
+	background: #000;
+	font-size: 75px;
+	vertical-align: baseline;
+	-webkit-box-reflect: below -20px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.9)));
+}
+
+.odometer.odometer-auto-theme .odometer-digit:nth-last-child(-n+2) {
+	border-radius: 0;
+	box-shadow: none;
+	background: #000;
+	font-size: 50px;
+	vertical-align: baseline;
+	-webkit-box-reflect: below -5px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.9)));
+}
+
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-car.odometer-animating-up .odometer-ribbon-inner {
+	transition: transform 5s;
+}
