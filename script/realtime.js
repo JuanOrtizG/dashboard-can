@@ -1,11 +1,11 @@
 
+
 	$(function() {
 
 		// We use an inline data source in the example, usually data would
 		// be fetched from a server
 
-		var data = [],
-			totalPoints = 300;
+		var data = [], totalPoints = 30;
 
 		function getRandomData() {
 
@@ -13,19 +13,37 @@
 				data = data.slice(1);
 
 			// Do a random walk
-
+			 y = 0;
 			while (data.length < totalPoints) {
 
-				var prev = data.length > 0 ? data[data.length - 1] : 50,
-					y = prev + Math.random() * 10 - 5;
+					var JSON = $.ajax({
+							url: "consulta.php?q=1",
+							dataType: 'json',
+							async: false
+							}).responseText;
+
+					var Respuesta = jQuery.parseJSON(JSON);
+
+					console.log(Respuesta);
+				y = Respuesta[0].fuellevel;
+				//y = Math.random()*100;
+
+				/*
+				var prev = data.length > 0 ? data[data.length - 1] : 50,  
+				y = prev + Math.random()*10 - 5;
 
 				if (y < 0) {
 					y = 0;
 				} else if (y > 100) {
 					y = 100;
 				}
+				*/
+
+				
 
 				data.push(y);
+				console.log("hola esta es data: ");
+				console.log(data);
 			}
 
 			// Zip the generated y values with the x values
@@ -56,13 +74,14 @@
 
 		var plot = $.plot("#placeholder", [ getRandomData() ], {
 			series: {
-				shadowSize: 0	// Drawing is faster without shadows
+				shadowSize: 10	// Drawing is faster without shadows
 			},
 			yaxis: {
 				min: 0,
 				max: 100
 			},
 			xaxis: {
+				
 				show: false
 			}
 		});

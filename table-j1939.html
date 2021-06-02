@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <script language="javascript" type="text/javascript" src="flot/jquery.js"></script>
+    <script type="text/javascript" src="script/loader.js"></script>
+    <script type="text/javascript">
+
+function ingresar(){
+      let lectura =  document.getElementById("input-data").value;
+            
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+        //AJAX PARA LAS PETICIONES A LA BASE DE DATOS
+        var JSON=$.ajax({ url:"consultatable.php?q=1", dataType: 'json', async: false}).responseText;
+        var Respuesta=jQuery.parseJSON(JSON);
+        console.log(Respuesta)  ; //PARA VER BUG
+
+        //CAMBIAMOS EL TIPO DE ESTRUCTURA DE DATOS DE JSON A 
+        console.log(Respuesta.length)
+        let datos=[]
+        for (var i = 0; i< parseInt(lectura); i++)
+        {
+            datos.push([Respuesta[i].throttle,Respuesta[i].fuellevel,Respuesta[i].fueltemp])
+        }
+
+        console.log(datos)
+        
+        //const datos = [Respuesta[0].throttle,Respuesta[0].fuellevel,Respuesta[0].fueltemp];     
+        //console.log(datos)
+
+        //CARGA DE DATOS DE LA TABLA
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Throttle');
+        data.addColumn('string', 'fuellevel');
+        data.addColumn('string', 'fueltemp');
+       
+        data.addRows(  datos  );
+
+        //SELECCIONAMOS EL ELEMENTO CONTENEDOR PARA RENDERIZAR
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        //RENDERIZAMOS LA TABLA EN EL ELMENTO CONTENEDORS
+        table.draw(data, {showRowNumber: true, width: '50%', height: '100%'});
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <p>Ingrese la cantidad de datos a consultar</p>
+    <div class="input-group row">
+    <input type="button" class="btn btn-danger col-1" value="Consultar" onclick="ingresar()">
+    <input class="form-control col-4"id="input-data"  type="input" value=""> 
+    </div>
+
+           
+    <div id="table_div" ></div>
+
+
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
